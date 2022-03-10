@@ -1,11 +1,11 @@
 package jpabook.jpashop;
 
-import org.assertj.core.api.Assertions;
+import jpabook.jpashop.domain.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.Rollback;

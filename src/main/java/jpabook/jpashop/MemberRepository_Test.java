@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 // Repository -> Entity를 찾아줌 (DAO랑 비슷한 역할)
 // DAO : Data Access Object
 @Repository
-public class MemberRepository {
+public class MemberRepository_Test {
 
     @PersistenceContext
     private EntityManager em;

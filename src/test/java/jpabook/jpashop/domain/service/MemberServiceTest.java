@@ -1,19 +1,17 @@
 package jpabook.jpashop.domain.service;
 
 import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.repository.MemberRepository;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.service.MemberService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.swing.text.html.parser.Entity;
 
 import static org.junit.Assert.*;
 
@@ -23,7 +21,8 @@ import static org.junit.Assert.*;
 @Transactional // 데이터 변경을 위함 (테스트에서는 변경 사항을 롤백시킴)
 public class MemberServiceTest {
 
-    @Autowired MemberService memberService;
+    @Autowired
+    MemberService memberService;
     @Autowired MemberRepository memberRepository;
     @Autowired EntityManager em;
 

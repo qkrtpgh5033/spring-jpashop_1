@@ -1,4 +1,4 @@
-package jpabook.jpashop.domain.item;
+package jpabook.jpashop.item;
 
 import jpabook.jpashop.domain.Category;
 import lombok.Getter;
@@ -28,5 +28,25 @@ public abstract class Item { // 상속관계 이기 때문에 abstarct 사용
     //실무에선 잘 안씀 다대다 관계 테이블 속성값에 한계때문
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+
+    //==비즈니스 로직==//
+
+    /**
+     * stock 증가
+     */
+
+    public void addStock(int quantity){
+        this.stockQuantity += quantity;
+    }
+
+    /**
+     * stcok 감소
+     */
+    public void removeStock(int quantity){
+        this.stockQuantity -= quantity;
+    }
+
+
 
 }

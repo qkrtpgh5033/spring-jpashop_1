@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-// jpa 모든 ★데이터 변경★이나 로직들은 "Transactional" 안에서 수행
 @Transactional(readOnly = true) // readOnly -> 조회 최적화
+// jpa 모든 ★데이터 변경★이나 로직들은 "Transactional" 안에서 수행
 public class MemberService {
 
 //    @Autowired // 스프링이 스프링 빈에 등록된 "MemberRepository" 의존관계 주입

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,6 +32,13 @@ public class MemberController {
     public String createForm(Model model){
         model.addAttribute("memberForm", new MemberForm());
         return "members/createMemberForm";
+    }
+
+    @GetMapping("/members")
+    public String createList(Model model){
+        List<Member> list = memberService.findMembers();
+        model.addAttribute("members", list);
+        return "members/member_List";
     }
 
     /**

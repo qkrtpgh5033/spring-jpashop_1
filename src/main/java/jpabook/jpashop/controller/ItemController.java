@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -44,6 +46,34 @@ public class ItemController {
         return "redirect:/";
 
     }
+
+
+    @GetMapping("/items/{itemId}/edit")
+    public String updateItemForm(@PathVariable("itemId") Long itemId, Model model){
+
+        Book item = (Book) itemService.findOne(itemId);
+
+        BookForm bookForm = new BookForm();
+        bookForm.setId(item.getId());
+        bookForm.setAuthor(item.getAuthor());
+        bookForm.setIsbn(item.getIsbn());
+        bookForm.setStockQuantity(item.getStockQuantity());
+        bookForm.setPrice(item.getPrice());
+        bookForm.setName(item.getName());
+
+        model.addAttribute("form", bookForm);
+        return "items/updateItemForm";
+    }
+
+
+    @PostMapping("/items/{itemId}/edit")
+    public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form){
+
+        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
+        return "redirect:/items";
+
+    }
+
 
 
 }
